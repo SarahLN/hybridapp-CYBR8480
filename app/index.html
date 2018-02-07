@@ -20,6 +20,23 @@
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/hybridapp.js"></script>
 
+    <!--ad scripts-->
+    <script type="text/javascript">
+      var testvar= [];
+      $.ajax({
+          url: 'http://hybridapp.mlhale.com/api/ads/7',
+          type: "GET",
+      }).then(function (data, status, request){
+        console.log("Successful ajax call: " + request.responseText);
+        $('#adverts').append(data.payload);
+      }).fail(function(request, status, error){
+        console.log("Ajax error: "+request.responseText);
+      });
+    </script>
     {{content-for "body-footer"}}
+    <p>Word from our sponsors</p>
+    <div id="adverts" style="width: 100%;">
+
+    </div>
   </body>
 </html>
